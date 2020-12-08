@@ -17,7 +17,7 @@ public class hashADirectory {
 
     static Map<String, String> hashMap = new HashMap<String, String>();//左-键｜｜右-值；
 
-    //hash部分(给文件专用）
+    //文件hash
     public static byte[] SHA1Checksum(InputStream is) throws Exception {
         //用于计算hash值的文件缓冲区
         byte[] buffer = new byte[1024];
@@ -28,11 +28,26 @@ public class hashADirectory {
             numRead = is.read(buffer);
             if (numRead > 0) {
                 complete.update(buffer, 0, numRead);        //complete用于存储当前文件的message
-                directoryComplete.update(buffer,0,numRead);     //directoryComplete用于给文件夹存放/更新其内部文件的message
+                //directoryComplete.update(buffer,0,numRead);     //directoryComplete用于给文件夹存放/更新其内部文件的message
             }
         } while (numRead != -1);
         is.close();
         return complete.digest();
+    }
+
+    //文件夹hash
+    public static String sha1(String data) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA1");
+        md.update(data.getBytes());
+        StringBuffer buf = new StringBuffer();
+        byte[] bits = md.digest();
+        for(int i=0;i<bits.length;i++){
+            int a = bits[i];
+            if(a<0) a+=256;
+            if(a<16) buf.append("0");
+            buf.append(Integer.toHexString(a));
+        }
+        return buf.toString();
     }
 
     //打开文件夹，并判别当前对象为文件/子文件夹
@@ -90,11 +105,13 @@ public class hashADirectory {
                 System.out.println("===此时当前文件夹"+name+"的value是："+DirectoryContents);
 
                 //正确的文件夹哈希值
-                String directoryResult="";
+               /* String directoryResult="";
                 byte[] bytes = DirectoryContents.getBytes();
                 for(int j=0;j<bytes.length;j++) {
                     directoryResult += Integer.toString(bytes[j]&0xFF, 16);
-                }
+                }*/
+                String directoryResult="";
+                directoryResult = sha1(DirectoryContents);
 
                 System.out.println("文件夹"+fs[i].getName()+"的哈希值是："+directoryResult);
 
