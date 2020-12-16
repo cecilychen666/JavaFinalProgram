@@ -9,13 +9,13 @@
   * 可以提交commit，可以进行“git log”查看commit历史
   * 可以进行“git reset”回滚到指定commit
   * 可创建多分支，可在分支之间切换
-  * 时间充足可考虑merge功能(加分)、远程仓库功能(不要求)
+  * 时间充足可考虑merge功能(加分)、远程仓库功能(不要求)<br>
 
 ## 开发方式
 * 每个组长创建一个github仓库，添加组员的push权限
 * 永远使用Pull Request来更新主分支
 * Commit描述和PR描述尽可能详细
-* 使用issue来讨论/记录开发计划、分工及问题/bug
+* 使用issue来讨论/记录开发计划、分工及问题/bug<br>
 
 ## Git实现原理
 * Key-value存储
@@ -35,7 +35,7 @@
   * 每个object存成一个文件
   * 在.git/objects目录下
   * 文件夹名+文件名就是key值
-  * Value被编码进了文件内容，暂时不用了解
+  * Value被编码进了文件内容，暂时不用了解<br>
   
 ## 每周日志
 
