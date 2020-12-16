@@ -17,7 +17,7 @@ public class test {
             test.form_tree("/Users/philiphan/Desktop/test!", directorycontents);
 
 
-            if (!(HEAD.getHead()).equals(sha1(test.willCommitKey + HEAD.getOldHead())))//若二者不相等       //这会还没创建文件呢，要提前创建好！！！！！！！！
+            if (!(HEAD.getHead()).equals(sha1(test.willCommitKey + HEAD.getOldHead())))//若二者不相等
             {
                 System.out.println("HEAD指向的Commit为:" + HEAD.getHead());
                 System.out.println("----当前文件的哈希值:" + test.willCommitKey);
@@ -44,7 +44,6 @@ public class test {
             e.printStackTrace();
         }
         //System.out.println("========下面显示HashMap信息:========\n" + hash.hashADirectory.hashMap + "\n");
-        
     }
 }
 

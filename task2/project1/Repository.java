@@ -7,7 +7,7 @@ import java.security.*;
 // 使用静态方法，在首次创建过仓库后，后续通过给定仓库地址便可对仓库的内容进行操作
 public class Repository {
 	// 仓库路径，包含仓库名
-	private static String path;
+	private static String path="/Users/philiphan/Desktop/myRepository";
 
 
 	// 设置仓库路径，应包含仓库名
@@ -17,7 +17,7 @@ public class Repository {
 			
 	// 无参构造方法
 	public Repository() {
-		setPath("C:/Users/WBZ/Desktop" + '/' + "myRepository");  // 设置默认路径和名字
+		setPath("/Users/philiphan/Desktop" + '/' + "myRepository");  // 设置默认路径和名字
 		// 创建仓库文件夹，并创建readme文档
 		try{
 			File file = new File(path);
@@ -53,9 +53,9 @@ public class Repository {
 	}
 	
 	// 将指定内容写入文件
-	private static void writeFile(String filename, String content) {
+	static void writeFile(String filename, String content) {
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+			BufferedWriter out = new BufferedWriter(new FileWriter("/Users/philiphan/Desktop/myRepository/"+filename));
 			out.write(content);
 			out.close();
 		}
