@@ -24,7 +24,7 @@ public class formTree extends Repository {
 
                 newblob.content();                               //用于显示blob的内容，即Value值
 
-                Repository.writeFile(newblob.getKey(), newblob.getContent());//写入文件夹
+                //Repository.writeFile(newblob.getKey(), newblob.getContent());//写入文件夹
                 //存入HashMap中
                 hash.hashADirectory.hashMap.put(newblob.getKey(), newblob.getContent());//左边是文件的键：哈希值；右边是文件的值：文件内容
                 System.out.println(newblob.getKey());
@@ -41,7 +41,7 @@ public class formTree extends Repository {
                 //便于理解，方便直接把commitkey赋值给commit的key
                 willCommitKey = newtree.key;
 
-                Repository.writeFile(newtree.getKey(), newtree.getContent());
+                //Repository.writeFile(newtree.getKey(), newtree.getContent());
                 //存入HashMap中
                 hash.hashADirectory.hashMap.put(newtree.key, newtree.content);     //将文件夹的键值对放入HashMap内
 
