@@ -35,14 +35,13 @@ public class Repository {
 	}
 	
 	// 构造方法重载，参数为新建仓库地址和仓库名
-	public Repository(String myPath, String name) {
+	public static void repository(String myPath, String name) {
 		setPath(myPath + '/' + name);
-		// 根据给定路径和仓库名创建仓库，并创建readme文档
+		// 根据给定路径和仓库名创建仓库
 		try{
 			File file = new File(path);
 			if(!file.exists()) {
 				file.mkdir();
-				writeFile(path + '/' + "readme.txt", "Hello World!");
 			}
 			// 若仓库名存在，则新建失败
 			else System.out.println("仓库名重复，新建失败！");
