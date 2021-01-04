@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import static project1.hash.SHA1Checksum;
- 
+
 public class keyvalueobject {
     protected String type;
     protected String key="";

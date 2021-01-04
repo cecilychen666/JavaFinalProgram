@@ -12,17 +12,28 @@ public class head{
         if(!head.exists()) {
             head.createNewFile();
         }
-        File oldhead = new File("/Users/philiphan/Desktop/HEAD/head.txt");
+        File oldhead = new File("/Users/philiphan/Desktop/HEAD/oldhead.txt");
         if(!oldhead.exists()){
             oldhead.createNewFile();
         }
 
     }
 
-    public void updateOldHead() throws IOException {
+    public void recordCommit(String key) throws IOException {
         BufferedWriter out2 = new BufferedWriter(new FileWriter("/Users/philiphan/Desktop/HEAD/oldhead.txt"));
         out2.write(this.getHead());
         out2.close();
+        File record = new File("/Users/philiphan/Desktop/HEAD/"+key);
+        if(!record.exists()) {
+            record.createNewFile();
+            BufferedWriter out3 = new BufferedWriter(new FileWriter(record));
+            out3.write(this.getHead());
+            out3.close();
+        }
+        else{
+            System.out.println("该commit版本已经存在，直接调用即可！");
+        }
+
     }
 
     public void writeHead(String commit) throws IOException { //将最新commit写入head文件内
@@ -50,6 +61,7 @@ public class head{
     }
 
     public String getOldHead() throws IOException {
+
         BufferedReader in = new BufferedReader(new FileReader("/Users/philiphan/Desktop/HEAD/oldhead.txt"));
         String line;
         StringBuffer sb = new StringBuffer();
