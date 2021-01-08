@@ -1,7 +1,7 @@
 # JavaFinalProgram-Group16
-此项目为第16小组的Java期末课程项目
-最终全部代码在task2--project1
-<br>
+* 此项目为第16小组的Java期末课程项目<br>
+* 【task2--project1文件夹】：这是最终全部完善后的项目代码<br>
+* task1文件夹：存放的是第一周提交的作业；其他文件为mac上传时自动生成的，与项目无关<br>
 <br>
 ## 课程项目要求
 * 命令行工具<br>
@@ -88,8 +88,7 @@
   * 提示：
     * 需要存储指向当前最新commit的HEAD指针
     * 每次新生成一个commit前，需要把根目录的tree key与已有的最新commit的tree key进行比较，发现不相同时（即文件发生了变动）才添加这个commit
-
-
+    
 ### Task 3
 * 至少完成：
   * 前两周的阶段性任务(key-value、Blob、Tree、Commit)
@@ -108,6 +107,7 @@
 
 * keyvalueobject<br>
   * 是⼀个键值对的类，其中包含了对键、值的初始化；键、值的赋值以及读取的方法；
+  * content():被子类继承并复写，得到对应类文件的内容
   * genKey(File file)：生成文件的哈希值
   * genKey(String content)：生成content的哈希值，调用hash类里的sha1方法
   * 它是下述三种方法的⽗类：<br>
