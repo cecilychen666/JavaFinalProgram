@@ -1,7 +1,7 @@
 # JavaFinalProgram-Group16
 * 此项目为第16小组的Java期末课程项目<br>
-* 【task2--project1文件夹】：这是最终全部完善后的项目代码<br>
-* task1文件夹：存放的是第一周提交的作业；其他文件为mac上传时自动生成的，与项目无关<br>
+* (final version)GitProject文件夹：这是最终全部完善后的项目代码<br>
+
 
 ## 课程项目要求
 * 命令行工具<br>
@@ -99,7 +99,7 @@
 ## Idea
 ### 1. 类<br>
 * Repository<br>
-  *  setPath():设置仓库路径
+  * setPath():设置仓库路径
   * repository(): 根据给定路径和仓库名创建仓库：
   * writeFile(): 将指定内容写入文件：
   * renameFile(): 文件重命名：
@@ -108,20 +108,23 @@
 * keyvalueobject<br>
   * 是⼀个键值对的类，其中包含了对键、值的初始化；键、值的赋值以及读取的方法；
   * content():被子类继承并复写，得到对应类文件的内容
-  * genKey(File file)：生成文件的哈希值
+  * genKey(File file)：生成文件的哈希值，调用SHA1Checksum()方法
   * genKey(String content)：生成content的哈希值，调用hash类里的sha1方法
   * 它是下述三种方法的⽗类：<br>
     * blob类<br>
       * blob类的实例，就是在检索目录的过程中发现的txt⽂件；<br>
       * 它的value是txt文件存储的内容，key是由value生成的哈希值；<br>
+      * 继承keyvalueobject父类，复写content()方法得到文件内容
     * tree类<br>
       * tree类的实例，就是在检索目录的过程中发现的子文件夹；<br>
-      * 它的value是该⽂件夹下的目录（包括：对象属性（tree/blob）、对象的key、对象的内容）；<br>
-      * 它的key是由value生成的哈希值；<br>
+      * 它的value是该⽂件夹下的目录（包括：对象属性（tree/blob）、对象的key、对象的内容）；它的key是由value生成的哈希值；<br>
+      * 继承keyvalueobject父类，复写content()方法得到文件夹的内容
     * commit类<br>
       * commit类的实例，本质就是根目录tree的信息；<br>
-      * 它的value就是根部的tree的目录+上⼀次commit的哈希值；<br>
-      * 它的key就是它value的哈希值<br>
+      * 它的value就是根部的tree的目录+上⼀次commit的哈希值；它的key就是它value的哈希值<br>
+      * 继承keyvalueobject父类<br>
+      
+      
       
 * hash<br>
 ⽤于产生哈希值。其中包含两个方法:<br>
@@ -160,6 +163,11 @@ head的实例其实也是⼀个txt文件，用以存放最新⼀次commit的哈�
   * deleteFile(file)：清空工作区的内容
   * rollBack(): 首先在oldhead读取上一个版本的哈希值，调用deleteFile(file)清空工作区的内容，在history里找到这个哈希值对应的版本内容，调用copy.copyDir()方法复制到工作区内
   * 读取recordCommit()方法生成的文件，将head里存储的哈希值改成oldhead里的哈希值，将oldhead改成oldhead对应的上一次的哈希值<br>
+ 
+* commandline
+  * commandline(head HEAD, formTree test):  Scanner接收用户指令,判断字符串是否相等分别执行commit,branch,rollback操作。
+
+
 
 
 
