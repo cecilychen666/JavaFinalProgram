@@ -30,7 +30,7 @@ public class test {
                 String str = input.next();
                 if (str.equals("commit")) {
 
-                    HEAD.updateOldHead();
+                    HEAD.recordCommit(HEAD.getHead());
                     commit Commit = new commit(test.willCommitKey, HEAD.getHead());
                     System.out.println("============新Commit已经生成！=============\n" + "Commit的Key是：" + Commit.key + "\nCommit的Value是：" + Commit.content);
                     HEAD.writeHead(Commit.key);       //【框架】将这个commit写入HEAD指针；这个commit还不是真正实例化成key-value的commit
